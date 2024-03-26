@@ -5,33 +5,36 @@ class ClapTrap
 {
 	private:
 		std::string _name;
-		int _hit_points;
-		int _energy_point;
-		int _attack_damage;
+		int 		_hit_points;
+		int 		_energy_point;
+		int 		_attack_damage;
 	public:
-		ClapTrap();
-		ClapTrap(std::string name);
-		~ClapTrap();
-		void attack(const std::string& target);
-		void takeDamage(unsigned int amount);
-		void beRepaired(unsigned int amount);
+					ClapTrap();
+					ClapTrap(std::string name);
+					~ClapTrap();
+					ClapTrap(const ClapTrap &copy);
 
-		std::string getName();
-		int getHp();
-		int getEp();
-		int getAd();
+		void 		attack(const std::string& target);
+		void 		takeDamage(unsigned int amount);
+		void 		beRepaired(unsigned int amount);
 
+		std::string getName() const ;
+		int 		getHp() const;
+		int 		getEp() const; 
+		int 		getAd() const;
+		void 		status(const ClapTrap& ramd, const ClapTrap& pepe);
 
+		bool 		Able_to_attack();
 
-		void 	print(std::string s);
-		void 	intprint(int n);
-		void 	nprint(std::string s);
+		void 		print(std::string s);
+		void 		intprint(int n);
+		void 		nprint(std::string s);
 
-		void setHp(int attackDamage);
-		void setEnergy(const std::string& target);
-		void status(const ClapTrap& ramd, const ClapTrap& pepe);
+		void 		setHp(int attackDamage);
+		void 		setEnergy(const std::string& target);
 
 };
+//void status(const ClapTrap& ramd, const ClapTrap& pepe);
 #endif
 
 /*
@@ -48,4 +51,40 @@ ClapTrap <name> attacks <target>, causing <damage> points of damage!
 The constructors and destructor must also display a message, so your peer-evaluators
 can easily see they have been called.
 Implement and turn in your own tests to ensure your code works as expected.
+
+
+#ifndef CLAPTRAP_HPP
+# define CLAPTRAP_HPP
+
+#include <iostream>
+
+class ClapTrap
+{
+	private:
+		std::string	_name;
+		int 		_hitPoints;
+		int 		_energyPoints;
+		int 		_attackDamage;
+
+	public:
+		ClapTrap(void);
+		ClapTrap(std::string name);
+		~ClapTrap(void);
+		
+		ClapTrap(const ClapTrap &copy);
+		
+		ClapTrap & operator =(ClapTrap const &inst2);
+		
+		void	attack(const std::string &target);
+		void	takeDamage(unsigned int amount);
+		void	beRepaired(unsigned int amount);
+		bool	isWorking(void);
+		int		getHp(void);
+		int		getEp(void);
+		void	showStatus(void);
+};
+
+#endif
+
+
 */
