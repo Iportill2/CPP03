@@ -10,10 +10,11 @@ class ClapTrap
 		int 		_energy_point;
 		int 		_attack_damage;
 	public:
-					ClapTrap();
-					ClapTrap(std::string name);
-					~ClapTrap();
-					ClapTrap(const ClapTrap &copy);
+					ClapTrap();						//canonical
+					ClapTrap(std::string name);		//canonical
+					~ClapTrap();					//canonical
+					ClapTrap(const ClapTrap &copy);	//canonical
+					ClapTrap & operator =(ClapTrap const &inst2);//canonical
 
 		void 		attack(const std::string& target);
 		void 		takeDamage(unsigned int amount);

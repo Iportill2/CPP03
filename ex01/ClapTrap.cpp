@@ -47,6 +47,14 @@ ClapTrap::ClapTrap(const ClapTrap &copy)
 	std::cout << "⚙️ Copy constructor called" << std::endl;
 	*this = copy;
 }
+ClapTrap & ClapTrap::operator =(ClapTrap const &inst2)
+{
+	this->_name = inst2._name;
+	this->_hit_points = inst2._hit_points;
+	this->_energy_point = inst2._energy_point;
+
+	return (*this);
+}
 void ClapTrap::intprint(int n)
 {
 	std::cout << n << std::endl;

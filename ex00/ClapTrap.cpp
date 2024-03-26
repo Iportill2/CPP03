@@ -37,6 +37,14 @@ ClapTrap::ClapTrap(std::string name) : _name(name),_hit_points(10),_energy_point
 	std::cout << "" << std::endl;
 	std::cout << rst;
 }
+ClapTrap & ClapTrap::operator =(ClapTrap const &inst2)
+{
+	this->_name = inst2._name;
+	this->_hit_points = inst2._hit_points;
+	this->_energy_point = inst2._energy_point;
+
+	return (*this);
+}
 ClapTrap::~ClapTrap()
 {
 	std::cout << cian;
