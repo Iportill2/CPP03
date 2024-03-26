@@ -6,17 +6,13 @@
 class ScavTrap :public ClapTrap
 {
 	private:
-		/* std::string _name;
-		int 		_hit_points;
-		int 		_energy_point;
-		int 		_attack_damage; */
+
 	public:
-		//ScavTrap 	ClapTrap();
-					ScavTrap();
-					ScavTrap(std::string name);
-					ScavTrap(const ScavTrap &copy);
-					~ScavTrap();
-		ScavTrap & operator =(ScavTrap const &inst2);
+					ScavTrap();						//canonical
+					ScavTrap(std::string name);		//canonical
+					ScavTrap(const ScavTrap &copy);	//canonical
+					~ScavTrap();					//canonical
+		ScavTrap & operator =(ScavTrap const &inst2);//canonical
 		
 		void 		guardGate();
 		void		attack(const std::string &target);
