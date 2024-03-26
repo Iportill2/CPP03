@@ -52,29 +52,7 @@ ScavTrap::~ScavTrap()
 {
 	print("ScavTrap Destructor Created!");
 }
-void ScavTrap::print(std::string s)
-{
-	std::cout << s << std::endl;
-}
-void ScavTrap::nprint(std::string s)
-{
-	std::cout << s ;
-}
-void ScavTrap::guardGate()
-{
-	print(rojo1);
-	nprint(_name);
-	nprint(" is now in Gate keeper mode!!");
-	print(rst1);
-}
-void ScavTrap::attack(const std::string &target)
-{
-	print(cian1);
-	nprint(_name);
-	nprint(" attacks to ");
-	nprint(target);
-	print(rst1);
-}
+
 ScavTrap & ScavTrap::operator =(ScavTrap const &inst1)
 {
 	this->_name = inst1._name;
@@ -83,4 +61,11 @@ ScavTrap & ScavTrap::operator =(ScavTrap const &inst1)
 	this->_attack_damage = inst1._attack_damage;
 
 	return (*this);
+}
+void ScavTrap::guardGate()
+{
+	print(rojo1);
+	nprint(_name);
+	nprint(" is now in Gate keeper mode!!");
+	print(rst1);
 }
