@@ -28,20 +28,19 @@ ScavTrap::ScavTrap() :  ClapTrap()
 }
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
-	print("ScavTrap Constructor Created!");
+	std::cout << "ScavTrap Constructor Created with name " << _name << std::endl;
 	initHp(100);
 	initEnergy(50);
 	initAd(20);
 
-	nprint("setname to:");
+/* 	nprint("setname to:");
 	print(getName());
 	nprint("setHP to:");
 	intprint(getHp());
 	nprint("setEP to:");
 	intprint(getEp());
 	nprint("setAD to:");
-	intprint(getAd());
-	std::cout << "" << std::endl;
+	intprint(getAd()); */
 }
 ScavTrap::ScavTrap(const ScavTrap &copy)
 {

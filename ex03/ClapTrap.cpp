@@ -10,8 +10,9 @@ std::string rst = "\033[0m";
 ClapTrap::ClapTrap() : _name("clapTrapName"),_hit_points(10),_energy_point(10),_attack_damage(0)
 {	
 	std::cout << rojo;
-	print("called to Default ClapTrap Constructor");
-	nprint("setname to:");
+	print("called to Default ClapTrap Constructor with name ");
+	print(_name);
+/* 	nprint("setname to:");
 	print(getName());
 	nprint("setHP to:");
 	intprint(getHp());
@@ -19,14 +20,16 @@ ClapTrap::ClapTrap() : _name("clapTrapName"),_hit_points(10),_energy_point(10),_
 	intprint(getEp());
 	nprint("setAD to:");
 	intprint(getAd());
-	std::cout << "" << std::endl;
+	std::cout <<  std::endl; */
 	std::cout << rst;
 }
 ClapTrap::ClapTrap(std::string name) : _name(name),_hit_points(10),_energy_point(10),_attack_damage(0)
 {
 	std::cout << verde;
-	print("called to ClapTrap Constructor");
-	nprint("setname to:");
+	std::cout <<"Called to ClapTrap Constructor with name ";
+	print(_name);
+
+	/* nprint("setname to:");
 	print(getName());
 	nprint("setHP to:");
 	intprint(getHp());
@@ -34,7 +37,7 @@ ClapTrap::ClapTrap(std::string name) : _name(name),_hit_points(10),_energy_point
 	intprint(getEp());
 	nprint("setAD to:");
 	intprint(getAd());
-	std::cout << "" << std::endl;
+	std::cout << "" << std::endl; */
 	std::cout << rst;
 }
 ClapTrap::~ClapTrap()
