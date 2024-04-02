@@ -2,18 +2,17 @@
 FragTrap::FragTrap() 
 {
 	print("Defaut FragTrap Constructor");
-	initName("Random1");
+	//this->_name=("FragTrapName");
 	initHp(100);
-	initEnergy(100);
-	initAd(30);
+	initEnergy(50);
+	initAd(20);
 }
-FragTrap::FragTrap(std::string name) 
+FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
 	print("FragTrap Constructor");
-	initName(name);
 	initHp(100);
-	initEnergy(100);
-	initAd(30);
+	initEnergy(50);
+	initAd(20);
 }
 FragTrap::FragTrap(const FragTrap &copy)
 {

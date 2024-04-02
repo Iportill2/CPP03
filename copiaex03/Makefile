@@ -4,12 +4,12 @@ NAME = Now_it’s_weird!
 SRCS = 	main.cpp \
 		ScavTrap.cpp \
 		FragTrap.cpp \
-		DiamondTrap.cpp \
-		ClapTrap.cpp 
+		ClapTrap.cpp \
+    	DiamondTrap.cpp
 
 CC = c++
 RM = rm -f
-CFLAGS = -Wall -Wextra -Werror -std=c++98 
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow
 OBJS = ${SRCS:.cpp=.o}
 DEPS = ${SRCS:.cpp=.d}
 
