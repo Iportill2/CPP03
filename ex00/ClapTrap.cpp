@@ -1,14 +1,16 @@
 #include "ClapTrap.hpp"
-std::string verde = "\033[32m";
-std::string amarillo = "\033[33m";
-std::string azul = "\033[34m";
-std::string magenta = "\033[35m";
-std::string cian = "\033[36m";
-std::string rojo = "\033[31m";
-std::string rst = "\033[0m";
+
 
 ClapTrap::ClapTrap() : _name("Ramdom"),_hit_points(10),_energy_point(10),_attack_damage(0) 
 {	
+	verde = "\033[32m";
+	amarillo = "\033[33m";
+	azul = "\033[34m";
+	magenta = "\033[35m";
+	cian = "\033[36m";
+	rojo = "\033[31m";
+	rst = "\033[0m";
+
 	std::cout << rojo;
 	print("called to Default Destructor");
 	nprint("setname to:");
@@ -22,9 +24,18 @@ ClapTrap::ClapTrap() : _name("Ramdom"),_hit_points(10),_energy_point(10),_attack
 	_defaultHp =_hit_points;
 	std::cout << std::endl;
 	std::cout << rst;
+
 }
 ClapTrap::ClapTrap(std::string name) : _name(name),_hit_points(10),_energy_point(10),_attack_damage(0)
 {
+	verde = "\033[32m";
+	amarillo = "\033[33m";
+	azul = "\033[34m";
+	magenta = "\033[35m";
+	cian = "\033[36m";
+	rojo = "\033[31m";
+	rst = "\033[0m";
+	
 	std::cout << verde;
 	print("called to Constructor");
 	nprint("setname to:");
@@ -169,7 +180,6 @@ void ClapTrap::takeDamage(unsigned int amount)
 	_hit_points-=amount;
 	if(_hit_points <= 0)
 		 std::cout << rojo << getName() <<  " DIE!" << rst << std::endl;
-	
 	print(rst);
 }
 
@@ -196,7 +206,6 @@ void ClapTrap::beRepaired(unsigned int amount)
 		print(rojo);
 		std::cout << _name;
 		std::cout << " Heals ";
-		//if(_defaultHp <= )
 		intprint(amount);
 		std::cout <<"Total Hp = ";
 		_hit_points+= amount;

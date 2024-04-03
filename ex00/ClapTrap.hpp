@@ -40,6 +40,16 @@ class ClapTrap
 		void 		intprint(int n);
 		void 		nprint(std::string s);
 
+
+		/*COLORS*/
+		std::string verde ;
+		std::string amarillo ;
+		std::string azul ;
+		std::string magenta ;
+		std::string cian ;
+		std::string rojo ;
+		std::string rst ;
+
 };
 //void status(const ClapTrap& ramd, const ClapTrap& pepe);
 #endif
