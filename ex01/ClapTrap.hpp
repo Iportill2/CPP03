@@ -52,5 +52,5 @@ class ClapTrap
 		std::string rst ;
 
 };
-//void status(const ClapTrap& ramd, const ClapTrap& pepe);
+
 #endif

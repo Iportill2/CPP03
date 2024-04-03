@@ -31,10 +31,13 @@ class ClapTrap
 		void 		status(const ClapTrap& ramd, const ClapTrap& pepe);
 		bool		is_die();
 		bool		is_lowEnergy();
+		void 		discountEnergy(const std::string& target);
 		/*SETTER*/
 		void		setdefHp(int value);
-		void 		setHp(int attackDamage);
-		void 		setEnergy(const std::string& target);
+		void 		setHp(int value);
+		void		setEnergy(int value);
+		void		setAd(int value);
+		void		setName(std::string name);
 		/*PRINTS*/
 		void 		print(std::string s);
 		void 		intprint(int n);
@@ -49,5 +52,5 @@ class ClapTrap
 		std::string rst ;
 
 };
-//void status(const ClapTrap& ramd, const ClapTrap& pepe);
+
 #endif

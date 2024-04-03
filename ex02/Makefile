@@ -4,7 +4,6 @@ NAME = Now_it’s_weird!
 SRCS = 	main.cpp \
 		ScavTrap.cpp \
 		FragTrap.cpp \
-		DiamondTrap.cpp \
 		ClapTrap.cpp 
 
 CC = c++

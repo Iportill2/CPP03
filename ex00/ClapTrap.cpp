@@ -12,7 +12,7 @@ ClapTrap::ClapTrap() : _name("Ramdom"),_hit_points(10),_energy_point(10),_attack
 	rst = "\033[0m";
 
 	std::cout << rojo;
-	print("called to Default Destructor");
+	print("ClapTrap Default Destructor");
 	nprint("setname to:");
 	print(getName());
 	nprint("setHP to:");
@@ -37,7 +37,7 @@ ClapTrap::ClapTrap(std::string name) : _name(name),_hit_points(10),_energy_point
 	rst = "\033[0m";
 	
 	std::cout << verde;
-	print("called to Constructor");
+	print("ClapTrap Constructor");
 	nprint("setname to:");
 	print(getName());
 	nprint("setHP to:");
@@ -60,11 +60,11 @@ ClapTrap & ClapTrap::operator =(ClapTrap const &inst)
 ClapTrap::~ClapTrap()
 {
 	std::cout << cian;
-	print("called to Destructor");
+	print("ClapTrap Destructor");
 }
 ClapTrap::ClapTrap(const ClapTrap &copy)
 {
-	std::cout << "⚙️ Copy constructor called" << std::endl;
+	std::cout << "ClapTrap Copy constructor called" << std::endl;
 	*this = copy;
 }
 std::string ClapTrap::getName() const 
@@ -83,11 +83,19 @@ int ClapTrap::getAd() const
 {
 	return(_attack_damage);
 }
-void ClapTrap::setHp(int attackDamage) 
+void ClapTrap::setHp(int value) 
 {   
-    _hit_points -= attackDamage;
+    _hit_points = value;
 }
-void ClapTrap::setEnergy(const std::string& target)
+void		ClapTrap::setName(std::string name)
+{
+	_name=name;
+}
+void		ClapTrap::setAd(int value)
+{
+	_attack_damage=value;
+}
+void ClapTrap::discountEnergy(const std::string& target)
 {	
 	(void)target;
 	if(getEp()<= 0)
@@ -123,9 +131,13 @@ void ClapTrap::attack(const std::string& target)
 		nprint(" causing ");
 		std::cout << getAd();
 		print(" points of damage!");
-		setEnergy(getName());
+		discountEnergy(getName());
 	}
 	print(rst);
+}
+void ClapTrap::setEnergy(int value)
+{
+	_energy_point=value;
 }
 bool ClapTrap::is_die()
 {
@@ -149,7 +161,6 @@ void ClapTrap::status(const ClapTrap& pjOne, const ClapTrap& pjTwo)
     std::cout << "|Health=" << pjOne.getHp();
     std::cout << "|Energy: " << pjOne.getEp();
     std::cout << "|Attack: " << pjOne.getAd() << std::endl;
-
     std::cout << pjTwo.getName();
     std::cout << "|Health=" << pjTwo.getHp();
     std::cout << "|Energy: " << pjTwo.getEp();
@@ -159,6 +170,14 @@ void ClapTrap::status(const ClapTrap& pjOne, const ClapTrap& pjTwo)
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
+	if(_hit_points <= 0)
+	{
+		std::cout << rojo << getName() <<  " Its already dead!" << rst << std::endl;
+		std::cout << getName() << " take " << amount << " damage" << std::endl;
+		_hit_points-=amount;
+		print(rst);
+		return;
+	}
 	std::cout << getName() << " take " << amount << " damage" << std::endl;
 	_hit_points-=amount;
 	if(_hit_points <= 0)
@@ -199,7 +218,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 		if(getHp() > getdefHp())
 			_hit_points = _defaultHp;
 		intprint(getHp());
-		setEnergy(getName());
+		discountEnergy(getName());
 	}
 	print(rst);
 }

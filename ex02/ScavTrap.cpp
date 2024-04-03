@@ -1,20 +1,12 @@
 #include "ScavTrap.hpp"
 
-std::string verde1 = "\033[32m";
-std::string amarillo1 = "\033[33m";
-std::string azul1 = "\033[34m";
-std::string magenta1 = "\033[35m";
-std::string cian1 = "\033[36m";
-std::string rojo1 = "\033[31m";
-std::string rst1 = "\033[0m";
-
 ScavTrap::ScavTrap() :  ClapTrap()
 {
-	print("ScavTrap Default Constructor Created!");
-	initName("Random");
-	initHp(100);
-	initEnergy(50);
-	initAd(20);
+	print("ScavTrap Default Constructor");
+	setName("Random");
+	setHp(100);
+	setEnergy(50);
+	setAd(20);
 
 	nprint("setname to:");
 	print(getName());
@@ -28,11 +20,10 @@ ScavTrap::ScavTrap() :  ClapTrap()
 }
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
-	print("ScavTrap Constructor Created!");
-	initHp(100);
-	initEnergy(50);
-	initAd(20);
-
+	print("ScavTrap Constructor");
+	setHp(100);
+	setEnergy(50);
+	setAd(20);
 	nprint("setname to:");
 	print(getName());
 	nprint("setHP to:");
@@ -45,27 +36,26 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 }
 ScavTrap::ScavTrap(const ScavTrap &copy)
 {
-	std::cout << "⚙️ Copy constructor called" << std::endl;
+	std::cout << "ScavTrap Copy constructor" << std::endl;
 	*this = copy;
 }
 ScavTrap::~ScavTrap()
 {
-	print("ScavTrap Destructor Created!");
+	print("ScavTrap Destructor");
 }
 
-ScavTrap & ScavTrap::operator =(ScavTrap const &inst1)
+ScavTrap & ScavTrap::operator =(ScavTrap const &inst)
 {
-	this->_name = inst1._name;
-	this->_hit_points = inst1._hit_points;
-	this->_energy_point = inst1._energy_point;
-	this->_attack_damage = inst1._attack_damage;
-
+	this->setName(inst.getName());
+	this->setHp(inst.getHp());
+	this->setEnergy(inst.getEp());
+	this->setAd(inst.getAd());
 	return (*this);
 }
 void ScavTrap::guardGate()
 {
-	print(rojo1);
-	nprint(_name);
+	print(rojo);
+	nprint(getName());
 	nprint(" is now in Gate keeper mode!!");
-	print(rst1);
+	print(rst);
 }
