@@ -195,9 +195,9 @@ void ClapTrap::beRepaired(unsigned int amount)
 	}
 	
 }
-void ClapTrap::initAd(int n)
+void ClapTrap::initAd(int value)
 {
-	_attack_damage = n;
+	_attack_damage = value;
 }
 void ClapTrap::initEnergy(int n)
 {

@@ -1,16 +1,18 @@
 #include "ClapTrap.hpp"
-std::string verde = "\033[32m";
-std::string amarillo = "\033[33m";
-std::string azul = "\033[34m";
-std::string magenta = "\033[35m";
-std::string cian = "\033[36m";
-std::string rojo = "\033[31m";
-std::string rst = "\033[0m";
 
-ClapTrap::ClapTrap() : _name("Ramdom"),_hit_points(10),_energy_point(10),_attack_damage(0)
+
+ClapTrap::ClapTrap() : _name("Ramdom"),_hit_points(10),_energy_point(10),_attack_damage(0) 
 {	
+	verde = "\033[32m";
+	amarillo = "\033[33m";
+	azul = "\033[34m";
+	magenta = "\033[35m";
+	cian = "\033[36m";
+	rojo = "\033[31m";
+	rst = "\033[0m";
+
 	std::cout << rojo;
-	print("called to Default Constructor");
+	print("ClapTrap Default Destructor");
 	nprint("setname to:");
 	print(getName());
 	nprint("setHP to:");
@@ -19,13 +21,23 @@ ClapTrap::ClapTrap() : _name("Ramdom"),_hit_points(10),_energy_point(10),_attack
 	intprint(getEp());
 	nprint("setAD to:");
 	intprint(getAd());
-	std::cout << "" << std::endl;
+	setdefHp(getHp());
+	std::cout << std::endl;
 	std::cout << rst;
+
 }
 ClapTrap::ClapTrap(std::string name) : _name(name),_hit_points(10),_energy_point(10),_attack_damage(0)
 {
+	verde = "\033[32m";
+	amarillo = "\033[33m";
+	azul = "\033[34m";
+	magenta = "\033[35m";
+	cian = "\033[36m";
+	rojo = "\033[31m";
+	rst = "\033[0m";
+	
 	std::cout << verde;
-	print("called to Constructor");
+	print("ClapTrap Constructor");
 	nprint("setname to:");
 	print(getName());
 	nprint("setHP to:");
@@ -34,34 +46,26 @@ ClapTrap::ClapTrap(std::string name) : _name(name),_hit_points(10),_energy_point
 	intprint(getEp());
 	nprint("setAD to:");
 	intprint(getAd());
-	std::cout << "" << std::endl;
+	setdefHp(getHp());
+	std::cout << std::endl;
 	std::cout << rst;
+}
+ClapTrap & ClapTrap::operator =(ClapTrap const &inst)
+{
+	this->_name = inst._name;
+	this->_hit_points = inst._hit_points;
+	this->_energy_point = inst._energy_point;
+	return (*this);
 }
 ClapTrap::~ClapTrap()
 {
 	std::cout << cian;
-	print("called to Destructor");
+	print("ClapTrap Destructor");
 }
 ClapTrap::ClapTrap(const ClapTrap &copy)
 {
-	std::cout << "⚙️ Copy constructor called" << std::endl;
+	std::cout << "ClapTrap Copy constructor called" << std::endl;
 	*this = copy;
-}
-ClapTrap & ClapTrap::operator =(ClapTrap const &inst2)
-{
-	this->_name = inst2._name;
-	this->_hit_points = inst2._hit_points;
-	this->_energy_point = inst2._energy_point;
-
-	return (*this);
-}
-void ClapTrap::intprint(int n)
-{
-	std::cout << n << std::endl;
-}
-void ClapTrap::print(std::string s)
-{
-	std::cout << s << std::endl;
 }
 std::string ClapTrap::getName() const 
 {
@@ -79,135 +83,155 @@ int ClapTrap::getAd() const
 {
 	return(_attack_damage);
 }
-void ClapTrap::nprint(std::string s)
-{
-	std::cout << s;
-}
-void ClapTrap::setHp(int attackDamage) 
+void ClapTrap::setHp(int value) 
 {   
-    std::cout << verde << "HP **ANTES** del golpe = " << rst;
-    intprint(getHp());
-    _hit_points -= attackDamage;
-    std::cout << cian <<  "HP **DESPUES** del golpe = " << rst;
-    intprint(getHp());
-
+    _hit_points = value;
 }
-void ClapTrap::setEnergy(const std::string& target)
+void		ClapTrap::setName(std::string name)
+{
+	_name=name;
+}
+void		ClapTrap::setAd(int value)
+{
+	_attack_damage=value;
+}
+void ClapTrap::discountEnergy(const std::string& target)
 {	
+	(void)target;
 	if(getEp()<= 0)
-	{
 		print("Low on energy");
-	}
 	else
 	{
 		_energy_point --;
-		std::cout <<"Resta 1 de energia con setEnergy a " << target << std::endl;
+		std::cout <<"Spend 1 of energy with setEnergy to " << getName() << std::endl;
 	}
-}
-bool ClapTrap::Able_to_attack()
-{
-	if(_energy_point >= 1 && _hit_points >= 1)
-		return(true);
-	else
-		return(false);
 }
 void ClapTrap::attack(const std::string& target)
 {
 	std::cout << rojo;
-	if( Able_to_attack() == false)
+	if(is_die() == true)
 	{
-		if(getHp() <= 0)
-		{
-			nprint(_name);
-			print(" cannot attack because is DIED!!");
-		}
-		if(getEp()<= 0)
-		{
-			nprint(_name);
-			print(" cannot repair havent got energy!!");
-		}
+		nprint(getName());
+		print(" cannot attack because is die");
+		return;
+	}
+	if(is_lowEnergy() == true)
+	{
+		nprint(getName());
+		print(" cannot attack because is low of energy");
+		return;
 	}
 	else
 	{
 		std::cout << rst;
-		nprint(_name);
+		nprint("ClapTrap ");
+		nprint(getName());
 		nprint(" attacks ");
 		nprint(target);
 		nprint(" causing ");
-		std::cout << _attack_damage;
+		std::cout << getAd();
 		print(" points of damage!");
-		//std::cout <<"Energy=";
-		setEnergy(target);
-		//std::cout <<"attack damage=";
-		setHp(_attack_damage);
-		_energy_point --;
+		discountEnergy(getName());
 	}
+	print(rst);
+}
+void ClapTrap::setEnergy(int value)
+{
+	_energy_point=value;
+}
+bool ClapTrap::is_die()
+{
+	if(_hit_points >= 1)
+		return(false);
+	else
+		return(true);
+}
+bool ClapTrap::is_lowEnergy()
+{
+	if(_energy_point >= 1)
+		return(false);
+	else
+		return(true);
 }
 
-void ClapTrap::status(const ClapTrap& ramd, const ClapTrap& pepe) 
+void ClapTrap::status(const ClapTrap& pjOne, const ClapTrap& pjTwo) 
 {
 	std::cout << magenta;
-    std::cout << ramd.getName() ;
-    std::cout << "|Health= " << ramd.getHp();
-    std::cout << "|Energy: " << ramd.getEp();
-    std::cout << "|Attack: " << ramd.getAd() << std::endl;
-
-    std::cout << pepe.getName();
-    std::cout << "|Health= " << pepe.getHp();
-    std::cout << "|Energy: " << pepe.getEp();
-    std::cout << "|Attack: " << pepe.getAd() << std::endl;
+    std::cout << pjOne.getName();
+    std::cout << "|Health=" << pjOne.getHp();
+    std::cout << "|Energy: " << pjOne.getEp();
+    std::cout << "|Attack: " << pjOne.getAd() << std::endl;
+    std::cout << pjTwo.getName();
+    std::cout << "|Health=" << pjTwo.getHp();
+    std::cout << "|Energy: " << pjTwo.getEp();
+    std::cout << "|Attack: " << pjTwo.getAd() << std::endl;
+	print(rst);
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
+	if(_hit_points <= 0)
+	{
+		std::cout << rojo << getName() <<  " Its already dead!" << rst << std::endl;
+		std::cout << getName() << " take " << amount << " damage" << std::endl;
+		_hit_points-=amount;
+		print(rst);
+		return;
+	}
 	std::cout << getName() << " take " << amount << " damage" << std::endl;
 	_hit_points-=amount;
 	if(_hit_points <= 0)
 		 std::cout << rojo << getName() <<  " DIE!" << rst << std::endl;
+	print(rst);
+}
+void	ClapTrap::setdefHp(int value)
+{
+	_defaultHp = value;
+}
 
+int ClapTrap::getdefHp() const
+{
+	return(_defaultHp);
 }
 void ClapTrap::beRepaired(unsigned int amount)
 {
-	if( Able_to_attack() == false)
+	if(is_die() == true)
 	{
-		if(getHp() <= 0)
-		{
-			nprint(_name);
-			print(" cannot repair because is DIED!!");
-		}
-		if(getEp()<= 0)
-		{
-			nprint(_name);
-			print(" cannot repair havent got energy!!");
-		}
+		nprint(getName());
+		print(" cannot be Repaired because is die");
+		return;
+	}
+	if(is_lowEnergy() == true)
+	{
+		nprint(getName());
+		print(" cannot be Repaired because is low of energy");
+		return;
 	}
 	else
 	{
 		print(rojo);
-		std::cout << _name;
-		std::cout << " se cura ";
+		std::cout << getName();
+		std::cout << " Heals ";
 		intprint(amount);
-		std::cout <<"total de vida de ";
-		std::cout << _name << " ";
+		std::cout <<"Total Hp = ";
 		_hit_points+= amount;
-		intprint(_hit_points);
-		print(rst);
+		if(getHp() > getdefHp())
+			_hit_points = _defaultHp;
+		intprint(getHp());
+		discountEnergy(getName());
 	}
-	
+	print(rst);
 }
-void ClapTrap::initAd(int n)
+void ClapTrap::intprint(int n)
 {
-	_attack_damage = n;
+	std::cout << n << std::endl;
 }
-void ClapTrap::initEnergy(int n)
+void ClapTrap::print(std::string s)
 {
-	_energy_point = n;
+	std::cout << s << std::endl;
 }
-void ClapTrap::initHp(int n)
+void ClapTrap::nprint(std::string s)
 {
-	_hit_points = n;
+	std::cout << s;
 }
-void ClapTrap::initName(std::string s)
-{
-	_name=s;
-}
+

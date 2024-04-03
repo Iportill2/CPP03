@@ -1,11 +1,23 @@
 #include "ScavTrap.hpp"
 int main()
 {
-	ClapTrap	pepes("pepe");
+	//ClapTrap	pepes("pepe");
 	ClapTrap	jose("Hose");
-	ClapTrap	tete;
+	//ClapTrap	tete;
 	ScavTrap	Gkeeper("Segurata");
-	Gkeeper.status(Gkeeper,tete);
+
+	Gkeeper.status(Gkeeper,jose);
+	Gkeeper.attack("Hose");
+	jose.takeDamage(Gkeeper.getAd());
+
+	Gkeeper.status(Gkeeper,jose);
+	Gkeeper.attack("Hose");
+	jose.takeDamage(Gkeeper.getAd());
+
+	Gkeeper.status(Gkeeper,jose);
+
+	/*
+	 Gkeeper.status(Gkeeper,tete);
 	pepes.attack("Hose");
 	if(pepes.getHp() > 0 && pepes.getEp() > 0)
 		jose.takeDamage(20);
@@ -24,7 +36,8 @@ int main()
 	jose.status(jose,pepes);
 	jose.attack("tete");
 	if(jose.getHp() > 0 && jose.getEp() > 0)
-		tete.takeDamage(20);
+		tete.takeDamage(20); 
+	*/
 
 
 	return (0);
