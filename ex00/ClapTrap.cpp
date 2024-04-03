@@ -7,7 +7,7 @@ std::string cian = "\033[36m";
 std::string rojo = "\033[31m";
 std::string rst = "\033[0m";
 
-ClapTrap::ClapTrap() : _name("Ramdom"),_hit_points(10),_energy_point(10),_attack_damage(0)
+ClapTrap::ClapTrap() : _name("Ramdom"),_hit_points(10),_energy_point(10),_attack_damage(0) 
 {	
 	std::cout << rojo;
 	print("called to Default Destructor");
@@ -19,7 +19,8 @@ ClapTrap::ClapTrap() : _name("Ramdom"),_hit_points(10),_energy_point(10),_attack
 	intprint(getEp());
 	nprint("setAD to:");
 	intprint(getAd());
-	std::cout << "" << std::endl;
+	_defaultHp =_hit_points;
+	std::cout << std::endl;
 	std::cout << rst;
 }
 ClapTrap::ClapTrap(std::string name) : _name(name),_hit_points(10),_energy_point(10),_attack_damage(0)
@@ -34,15 +35,15 @@ ClapTrap::ClapTrap(std::string name) : _name(name),_hit_points(10),_energy_point
 	intprint(getEp());
 	nprint("setAD to:");
 	intprint(getAd());
-	std::cout << "" << std::endl;
+	_defaultHp=_hit_points;
+	std::cout << std::endl;
 	std::cout << rst;
 }
-ClapTrap & ClapTrap::operator =(ClapTrap const &inst2)
+ClapTrap & ClapTrap::operator =(ClapTrap const &inst)
 {
-	this->_name = inst2._name;
-	this->_hit_points = inst2._hit_points;
-	this->_energy_point = inst2._energy_point;
-
+	this->_name = inst._name;
+	this->_hit_points = inst._hit_points;
+	this->_energy_point = inst._energy_point;
 	return (*this);
 }
 ClapTrap::~ClapTrap()
@@ -94,30 +95,29 @@ void ClapTrap::setHp(int attackDamage)
 }
 void ClapTrap::setEnergy(const std::string& target)
 {	
+	(void)target;
 	if(getEp()<= 0)
-	{
 		print("Low on energy");
-	}
 	else
 	{
 		_energy_point --;
-		std::cout <<"Resta 1 de energia con setEnergy a " << target << std::endl;
+		std::cout <<"Resta 1 de energia con setEnergy a " << getName() << std::endl;
 	}
-}
-bool ClapTrap::Able_to_attack()
-{
-	if(_energy_point >= 1 && _hit_points >= 1)
-		return(true);
-	else
-		return(false);
 }
 void ClapTrap::attack(const std::string& target)
 {
 	std::cout << rojo;
-	if(Able_to_attack() == false)
+	if(is_die() == true)
 	{
 		nprint(_name);
-		print(" cannot attack");
+		print(" cannot attack because is die");
+		return;
+	}
+	if(is_lowEnergy() == true)
+	{
+		nprint(_name);
+		print(" cannot attack because is low of energy");
+		return;
 	}
 	else
 	{
@@ -129,12 +129,23 @@ void ClapTrap::attack(const std::string& target)
 		nprint(" causing ");
 		std::cout << _attack_damage;
 		print(" points of damage!");
-		//std::cout <<"Energy=";
-		setEnergy(target);
-		//std::cout <<"attack damage=";
-		setHp(_attack_damage);
 		_energy_point --;
 	}
+	print(rst);
+}
+bool ClapTrap::is_die()
+{
+	if(_hit_points >= 1)
+		return(false);
+	else
+		return(true);
+}
+bool ClapTrap::is_lowEnergy()
+{
+	if(_energy_point >= 1)
+		return(false);
+	else
+		return(true);
 }
 
 void ClapTrap::status(const ClapTrap& ramd, const ClapTrap& pepe) 
@@ -149,6 +160,7 @@ void ClapTrap::status(const ClapTrap& ramd, const ClapTrap& pepe)
     std::cout << "|Health=" << pepe.getHp();
     std::cout << "|Energy: " << pepe.getEp();
     std::cout << "|Attack: " << pepe.getAd() << std::endl;
+	print(rst);
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
@@ -157,16 +169,42 @@ void ClapTrap::takeDamage(unsigned int amount)
 	_hit_points-=amount;
 	if(_hit_points <= 0)
 		 std::cout << rojo << getName() <<  " DIE!" << rst << std::endl;
+	
+	print(rst);
+}
 
+int ClapTrap::getdefHp() const
+{
+	return(_defaultHp);
 }
 void ClapTrap::beRepaired(unsigned int amount)
 {
-	print(rojo);
-	std::cout << "se cura ";
-	intprint(amount);
-	std::cout <<"total de vida=";
-	_hit_points+= amount;
-	intprint(_hit_points);
+	if(is_die() == true)
+	{
+		nprint(_name);
+		print(" cannot be Repaired because is die");
+		return;
+	}
+	if(is_lowEnergy() == true)
+	{
+		nprint(_name);
+		print(" cannot be Repaired because is low of energy");
+		return;
+	}
+	else
+	{
+		print(rojo);
+		std::cout << _name;
+		std::cout << " Heals ";
+		//if(_defaultHp <= )
+		intprint(amount);
+		std::cout <<"Total Hp = ";
+		_hit_points+= amount;
+		if(_hit_points > _defaultHp)
+			_hit_points = _defaultHp;
+		intprint(_hit_points);
+		_energy_point--;
+	}
 	print(rst);
 }
 

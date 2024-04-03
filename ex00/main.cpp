@@ -3,11 +3,16 @@ int main()
 {
 	ClapTrap ramd;
 	ClapTrap pepe("pepe");
+
+/* 	ramd.status(ramd,pepe);
 	ramd.attack("pepe");
-	pepe.takeDamage(40);
+	pepe.takeDamage(9);
+	pepe.attack("ramd");
+	ramd.beRepaired(200);
 	ramd.status(ramd,pepe);
 	pepe.beRepaired(20);
-	ramd.status(ramd,pepe);
-	ramd.attack("pepe");
+	ramd.status(ramd,pepe); */
+
+		pepe.beRepaired(20);
 	ramd.status(ramd,pepe);
 }
