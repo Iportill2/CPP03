@@ -13,6 +13,6 @@ int main()
 	pepe.beRepaired(20);
 	ramd.status(ramd,pepe); */
 
-		pepe.beRepaired(20);
+	pepe.beRepaired(200);
 	ramd.status(ramd,pepe);
 }
