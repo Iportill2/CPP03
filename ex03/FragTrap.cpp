@@ -1,63 +1,62 @@
-#include "FragTrap.hpp"
-FragTrap::FragTrap() : ClapTrap()
-{
-	nprint(amarillo);
-	print("FragTrap Default Constructor");
-	//setName("Random_frag");
-	setHp(100);
-	setEnergy(100);
-	setAd(30);
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   FragTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: imontero <imontero@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/19 12:49:11 by imontero          #+#    #+#             */
+/*   Updated: 2023/12/19 20:26:14 by imontero         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-	nprint("setname to:");
-	print(getName());
-	nprint("setHP to:");
-	intprint(getHp());
-	nprint("setEP to:");
-	intprint(getEp());
-	nprint("setAD to:");
-	intprint(getAd());
-	std::cout << "" << std::endl;
-	nprint(rst);
-}
-FragTrap::FragTrap(std::string name) : ClapTrap(name)
+#include "FragTrap.hpp"
+
+FragTrap::FragTrap(void) : ClapTrap(), _hitPoints(100), _energyPoints(100), _attackDamage(30)
 {
-	nprint(amarillo);
-	print("FragTrap Constructor");
 	setHp(100);
-	setEnergy(100);
-	setAd(30);
-	nprint("setname to:");
-	print(getName());
-	nprint("setHP to:");
-	intprint(getHp());
-	nprint("setEP to:");
-	intprint(getEp());
-	nprint("setAD to:");
-	intprint(getAd());
-	std::cout << "" << std::endl;
-	nprint(rst);
+	setEp(100);
+	setAt(30);
+	
+	/*this->setHp(100);
+	this->setEp(100);
+	this->setAt(30);*/
+	std::cout << "FragTrap (Default) 👾 : " << this->getName() << " assembled!" << std::endl;
 }
-FragTrap::FragTrap(const FragTrap &copy)
+
+FragTrap::FragTrap(std::string name) : ClapTrap(name), _hitPoints(100), _energyPoints(100), _attackDamage(30)
 {
-	print("FragTrap Copy constructor");
+	setHp(100);
+	setEp(100);
+	setAt(30);
+	
+	/*this->setHp(100);
+	this->setEp(100);
+	this->setAt(30);*/
+	std::cout << "FragTrap 👾 : " << this->getName() << " assembled!" << std::endl;
+}
+
+FragTrap::FragTrap(const FragTrap &copy) : ClapTrap(copy)
+{
+	std::cout << "FragTrap ⚙️ Copy constructor called" << std::endl;
 	*this = copy;
 }
-FragTrap::~FragTrap()
+
+FragTrap::~FragTrap(void)
 {
-	std::cout << rojo;
-	print("FragTrap Destructor");
-	std::cout << rst;
+	std::cout << "FragTrap " << this->getName() << " 👎" << std::endl;
 }
-FragTrap & FragTrap::operator =(FragTrap const &inst)
+
+FragTrap & FragTrap::operator =(FragTrap const &inst2)
 {
-	this->setName(inst.getName());
-	this->setHp(inst.getHp());
-	this->setEnergy(inst.getEp());
-	this->setAd(inst.getAd());
+	this->_name = inst2._name;
+	this->_hitPoints = inst2._hitPoints;
+	this->_energyPoints = inst2._energyPoints;
+
 	return (*this);
 }
 
-void FragTrap::highFivesGuys(void)
+void	FragTrap::highFivesGuys(void)
 {
-	print("High five!!");
+	std::cout << this->getName() << " 📢 GIVE ME 5 MTHRFKR! 🖐🖐🖐🖐🖐" << std::endl;
 }

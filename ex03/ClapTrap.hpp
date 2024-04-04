@@ -1,57 +1,54 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: imontero <imontero@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/18 17:06:28 by imontero          #+#    #+#             */
+/*   Updated: 2023/12/19 17:41:03 by imontero         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef CLAPTRAP_HPP
 # define CLAPTRAP_HPP
-# include <iostream>
+
+#include <iostream>
+
 class ClapTrap
 {
 	protected:
-		//private atributes of Claptrap
-		int			_defaultHp;
+		std::string	_name;
+		int 		_hitPoints;
+		int 		_energyPoints;
+		int 		_attackDamage;
 
-		std::string _name;			
-		int 		_hit_points;	//.. def 10
-		int 		_energy_point;	//.. def 10
-		int 		_attack_damage;	//.. def 0
 	public:
-					ClapTrap();						//canonical
-					ClapTrap(std::string name);		//canonical
-					~ClapTrap();					//canonical
-					ClapTrap(const ClapTrap &copy);	//canonical
-					ClapTrap & operator =(ClapTrap const &inst2);//canonical
-
-		void 		attack(const std::string& target); 	//public member funtion subject
-		void 		takeDamage(unsigned int amount); 	//public member funtion subject
-		void 		beRepaired(unsigned int amount); 	//public member funtion subject
-
-		std::string getName() const ;
-		int			getdefHp() const;
-		int 		getHp() const;
-		int 		getEp() const; 
-		int 		getAd() const;
-
-		void 		status(const ClapTrap& ramd, const ClapTrap& pepe);
-		bool		is_die();
-		bool		is_lowEnergy();
-		void 		discountEnergy(const std::string& target);
-
-		void		setdefHp(int value);
-		void 		setHp(int value);
-		void		setEnergy(int value);
-		void		setAd(int value);
+		ClapTrap(void);
+		ClapTrap(std::string name);
+		~ClapTrap(void);
+		
+		ClapTrap(const ClapTrap &copy);
+		
+		ClapTrap & operator =(ClapTrap const &inst2);
+		
+		void		attack(const std::string &target);
+		void		takeDamage(unsigned int amount);
+		void		beRepaired(unsigned int amount);
+		bool		isWorking(void);
+		
+		std::string getName(void);
 		void		setName(std::string name);
-
-		void 		print(std::string s);
-		void 		intprint(int n);
-		void 		nprint(std::string s);
-
-		std::string verde ;
-		std::string amarillo ;
-		std::string azul ;
-		std::string magenta ;
-		std::string cian ;
-		std::string rojo ;
-		std::string rst ;
-
+		
+		int			getHp(void);
+		void		setHp(unsigned int amount);
+		
+		int			getEp(void);
+		void		setEp(unsigned int amount);
+		void		substractEp(unsigned int amount);
+		
+		void		setAt(unsigned int amount);
+		void		showStatus(void);
 };
 
 #endif

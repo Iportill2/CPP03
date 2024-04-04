@@ -1,68 +1,76 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: imontero <imontero@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/19 11:50:22 by imontero          #+#    #+#             */
+/*   Updated: 2023/12/19 20:23:13 by imontero         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap() :  ClapTrap()
+ScavTrap::ScavTrap(void) : ClapTrap(), _hitPoints(100), _energyPoints(50), _attackDamage(20)
 {
-	nprint(verde);
-	print("ScavTrap Default Constructor");
-	//setName("Random");
 	setHp(100);
-	setEnergy(50);
-	setAd(20);
-
-	nprint("setname to:");
-	print(getName());
-	nprint("setHP to:");
-	intprint(getHp());
-	nprint("setEP to:");
-	intprint(getEp());
-	nprint("setAD to:");
-	intprint(getAd());
-	std::cout << "" << std::endl;
-	nprint(rst);
+	setEp(50);
+	setAt(20);
+	
+	/*this->_hitPoints = 100;
+	this->_energyPoints = 50;
+	this->_attackDamage = 20;
+	*/
+	//this->setName("Unknown");
+	std::cout << "Default SC4V-TP has been created 🚧 Codename: " << this->getName() << std::endl;
 }
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
+
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name), _hitPoints(100), _energyPoints(50), _attackDamage(20)
 {
-	nprint(verde);
-	print("ScavTrap Constructor");
 	setHp(100);
-	setEnergy(50);
-	setAd(20);
-	nprint("setname to:");
-	print(getName());
-	nprint("setHP to:");
-	intprint(getHp());
-	nprint("setEP to:");
-	intprint(getEp());
-	nprint("setAD to:");
-	intprint(getAd());
-	std::cout << "" << std::endl;
-
-	nprint(rst);
+	setEp(50);
+	setAt(20);
+	/*this->_hitPoints = 100;
+	this->_energyPoints = 50;
+	this->_attackDamage = 20;*/
+	std::cout << "SC4V-TP has been created 🚧 Codename: " << this->getName() << std::endl;
 }
-ScavTrap::ScavTrap(const ScavTrap &copy)
+
+ScavTrap::ScavTrap(const ScavTrap &copy) : ClapTrap(copy)
 {
-	std::cout << "ScavTrap Copy constructor" << std::endl;
+	std::cout << "SC4V-TP ⚙️ Copy constructor called" << std::endl;
 	*this = copy;
 }
-ScavTrap::~ScavTrap()
+
+ScavTrap::~ScavTrap(void)
 {
-	std::cout << rojo;
-	print("ScavTrap Destructor");
-	std::cout << rst;
+	std::cout << "SC4V-TP 😵 " << this->getName() << " shutdown ☠️" << std::endl;
 }
 
-ScavTrap & ScavTrap::operator =(ScavTrap const &inst)
+ScavTrap & ScavTrap::operator =(ScavTrap const &inst2)
 {
-	this->setName(inst.getName());
-	this->setHp(inst.getHp());
-	this->setEnergy(inst.getEp());
-	this->setAd(inst.getAd());
+	this->_name = inst2._name;
+	this->_hitPoints = inst2._hitPoints;
+	this->_energyPoints = inst2._energyPoints;
+	this->_attackDamage = inst2._attackDamage;
+
 	return (*this);
 }
-void ScavTrap::guardGate()
+
+void	ScavTrap::attack(const std::string &target)
 {
-	print(rojo);
-	nprint(getName());
-	nprint(" is now in Gate keeper mode!!");
-	print(rst);
+	if (this->isWorking())
+	{
+		std::cout << "🪓 SC4V-TP " << this->getName() << " attacks " << target;
+		std::cout << std::endl;
+		this->setEp(-1);
+	}
+	else
+		std::cout << "🚫 " << this->getName() << " is not working" << std::endl;
+}
+
+void	ScavTrap::guardGate(void)
+{
+	std::cout << this->getName() << " is now in Gate Keeper mode 🥅" << std::endl;
 }

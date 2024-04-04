@@ -6,7 +6,6 @@ SRCS = 	main.cpp \
 		FragTrap.cpp \
 		ClapTrap.cpp \
     	DiamondTrap.cpp
-
 CC = c++
 RM = rm -f
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow

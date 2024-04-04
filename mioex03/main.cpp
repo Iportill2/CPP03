@@ -1,16 +1,15 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: iportill <iportill@student.42urduliz.co    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/19 09:09:00 by imontero          #+#    #+#             */
-/*   Updated: 2024/04/02 13:03:33 by iportill         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
+/* int main()
+{
+	ClapTrap	a("lucas");
+	ScavTrap	pepi("pepe");
+	FragTrap	paca("paco");
+
+	paca.highFivesGuys();
+	pepi.attack("paco");
+	paca.attack("pepe");
+} */
 
 int main()
 {
@@ -20,10 +19,10 @@ int main()
 	//ScavTrap	manolito("Manu");
 	//FragTrap	gustavito("Gustavito");
 
-	DiamondTrap	diamantito("Diamantitoss");
-
+	DiamondTrap	diamantita;
+	DiamondTrap	diamantito("Diamantitos");
 	diamantito.whoAmI();
-	
+	diamantita.whoAmI();
 	/*gustavito.highFivesGuys();
 	manolito.attack("Kalletano");
 	kalletano.takeDamage(20);
@@ -54,7 +53,7 @@ int main()
 	josebas.attack("Kalletano");
 	kalletano.takeDamage(20);
 	josebas.attack("Kalletano");
-	kalletano.takeDamage(20);*/
+	kalletano.takeDamage(20);
 
-	return (0);
+	return (0);*/
 }

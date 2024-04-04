@@ -1,18 +1,38 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: imontero <imontero@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/19 10:51:22 by imontero          #+#    #+#             */
+/*   Updated: 2023/12/19 20:00:05 by imontero         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SCAVTRAP_HPP
 # define SCAVTRAP_HPP
+
 # include "ClapTrap.hpp"
 
-class ScavTrap : virtual public ClapTrap					//public claptrap
+class ScavTrap : public virtual ClapTrap
 {
-	private:
-
+	protected:
+		int			_hitPoints;
+		int			_energyPoints;
+		int			_attackDamage;
+	
 	public:
-					ScavTrap();							//canonical
-					ScavTrap(std::string name);			//canonical
-					ScavTrap(const ScavTrap &copy);		//canonical
-					~ScavTrap();						//canonical
-		ScavTrap & 	operator =(ScavTrap const &inst);	//canonical
+		ScavTrap(void);
+		ScavTrap(std::string name);
+		~ScavTrap(void);
+
+		ScavTrap(const ScavTrap &copy);
+
+		ScavTrap & operator =(ScavTrap const &inst2);
 		
-		void 		guardGate();						//public member funtion subject
+		void	guardGate(void);
+		void	attack(const std::string &target);
 };
+
 #endif
