@@ -1,27 +1,31 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ClapTrap.cpp                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: imontero <imontero@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/18 17:21:06 by imontero          #+#    #+#             */
-/*   Updated: 2023/12/19 17:40:50 by imontero         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "ClapTrap.hpp"
-
-
 
 ClapTrap::ClapTrap(void): _name("Unknown"), _hitPoints(100), _energyPoints(50), _attackDamage(20)
 {
-	std::cout << "An unknown ClapTrap has been created 🐒" << std::endl;
+	verde = "\033[32m";
+	amarillo = "\033[33m";
+	azul = "\033[34m";
+	magenta = "\033[35m";
+	cian = "\033[36m";
+	rojo = "\033[31m";
+	rst = "\033[0m";
+	std::cout << azul ;
+	std::cout << "Default Constructor Claptrap Named "<< _name << std::endl;
+	std::cout << rst ;
 }
 
 ClapTrap::ClapTrap(std::string name): _name(name), _hitPoints(100), _energyPoints(50), _attackDamage(20)
 {
-	std::cout << "A ClapTrap has been created 🤖 Codename: " << this->_name << std::endl;
+	verde = "\033[32m";
+	amarillo = "\033[33m";
+	azul = "\033[34m";
+	magenta = "\033[35m";
+	cian = "\033[36m";
+	rojo = "\033[31m";
+	rst = "\033[0m";
+	std::cout << azul ;
+	std::cout << "Constructor Claptrap Named " << _name << std::endl;
+	std::cout << rst ;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &copy)
@@ -32,7 +36,9 @@ ClapTrap::ClapTrap(const ClapTrap &copy)
 
 ClapTrap::~ClapTrap(void)
 {
-	std::cout << this->_name << " shutdown 💀" << std::endl;
+	std::cout << rojo ;
+	std::cout << "Destructor Claptrap Named " << _name << std::endl;
+	std::cout << rst ;
 }
 
 ClapTrap & ClapTrap::operator =(ClapTrap const &inst2)

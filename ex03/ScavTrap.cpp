@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: imontero <imontero@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/19 11:50:22 by imontero          #+#    #+#             */
-/*   Updated: 2023/12/19 20:23:13 by imontero         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "ScavTrap.hpp"
 
 ScavTrap::ScavTrap(void) : ClapTrap(), _hitPoints(100), _energyPoints(50), _attackDamage(20)
@@ -23,7 +11,11 @@ ScavTrap::ScavTrap(void) : ClapTrap(), _hitPoints(100), _energyPoints(50), _atta
 	this->_attackDamage = 20;
 	*/
 	//this->setName("Unknown");
-	std::cout << "Default SC4V-TP has been created 🚧 Codename: " << this->getName() << std::endl;
+	//std::cout << "Default SC4V-TP has been created 🚧 Codename: " << this->getName() << std::endl;
+
+	std::cout << verde ;
+	std::cout << "Default Constructor ScavTrap Named " << this->getName() << std::endl;
+	std::cout << rst ;
 }
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name), _hitPoints(100), _energyPoints(50), _attackDamage(20)
@@ -34,7 +26,10 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name), _hitPoints(100), _energyP
 	/*this->_hitPoints = 100;
 	this->_energyPoints = 50;
 	this->_attackDamage = 20;*/
-	std::cout << "SC4V-TP has been created 🚧 Codename: " << this->getName() << std::endl;
+	std::cout << verde ;
+	std::cout << "Constructor ScavTrap Named " << this->getName() << std::endl;
+	std::cout << rst ;
+	//std::cout << "SC4V-TP has been created 🚧 Codename: " << this->getName() << std::endl;
 }
 
 ScavTrap::ScavTrap(const ScavTrap &copy) : ClapTrap(copy)
@@ -45,7 +40,10 @@ ScavTrap::ScavTrap(const ScavTrap &copy) : ClapTrap(copy)
 
 ScavTrap::~ScavTrap(void)
 {
-	std::cout << "SC4V-TP 😵 " << this->getName() << " shutdown ☠️" << std::endl;
+	std::cout << rojo ;
+	std::cout << "Destructor ScavTrap Named " << this->getName() << std::endl;
+	std::cout << rst ;
+	//std::cout << "SC4V-TP 😵 " << this->getName() << " shutdown ☠️" << std::endl;
 }
 
 ScavTrap & ScavTrap::operator =(ScavTrap const &inst2)

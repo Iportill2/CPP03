@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   FragTrap.cpp                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: imontero <imontero@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/19 12:49:11 by imontero          #+#    #+#             */
-/*   Updated: 2023/12/19 20:26:14 by imontero         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "FragTrap.hpp"
 
 FragTrap::FragTrap(void) : ClapTrap(), _hitPoints(100), _energyPoints(100), _attackDamage(30)
@@ -21,7 +9,10 @@ FragTrap::FragTrap(void) : ClapTrap(), _hitPoints(100), _energyPoints(100), _att
 	/*this->setHp(100);
 	this->setEp(100);
 	this->setAt(30);*/
-	std::cout << "FragTrap (Default) 👾 : " << this->getName() << " assembled!" << std::endl;
+	std::cout << cian ;
+	std::cout << "Default Constructor FragTrap Named " << this->getName() << std::endl;
+	std::cout << rst ;
+	//std::cout << "FragTrap (Default) 👾 : " << this->getName() << " assembled!" << std::endl;
 }
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name), _hitPoints(100), _energyPoints(100), _attackDamage(30)
@@ -33,7 +24,9 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name), _hitPoints(100), _energyP
 	/*this->setHp(100);
 	this->setEp(100);
 	this->setAt(30);*/
-	std::cout << "FragTrap 👾 : " << this->getName() << " assembled!" << std::endl;
+	std::cout << cian ;
+	std::cout << "Constructor FragTrap Named " << this->getName() << std::endl;
+	std::cout << rst ;
 }
 
 FragTrap::FragTrap(const FragTrap &copy) : ClapTrap(copy)
@@ -44,7 +37,10 @@ FragTrap::FragTrap(const FragTrap &copy) : ClapTrap(copy)
 
 FragTrap::~FragTrap(void)
 {
-	std::cout << "FragTrap " << this->getName() << " 👎" << std::endl;
+	std::cout << rojo ;
+	std::cout << "Destructor FragTrap Named " << this->getName() << std::endl;
+	std::cout << rst ;
+	//std::cout << "FragTrap " << this->getName() << " 👎" << std::endl;
 }
 
 FragTrap & FragTrap::operator =(FragTrap const &inst2)

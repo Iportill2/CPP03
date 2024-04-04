@@ -1,24 +1,14 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   DiamondTrap.cpp                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: iportill <iportill@student.42urduliz.co    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/19 17:51:06 by imontero          #+#    #+#             */
-/*   Updated: 2024/04/04 15:09:21 by iportill         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "DiamondTrap.hpp"
 
 DiamondTrap::DiamondTrap(void)
 {
-	std::cout << "DiamondTrap default constructor called" << std::endl;
 	this->_name = "Unknown";
 	setHp(FragTrap::_hitPoints);
 	setEp(ScavTrap::_energyPoints);
 	setAt(FragTrap::_attackDamage);
+	std::cout << magenta ;
+	std::cout << "Default Constructor DiamondTrap Named " << this->getName() << std::endl;
+	std::cout << rst ;
 }
 
 DiamondTrap::DiamondTrap(std::string name): ClapTrap(name + "_clap_name"), ScavTrap(name + "_scav_name"), FragTrap(name + "_frag_name") 
@@ -27,13 +17,16 @@ DiamondTrap::DiamondTrap(std::string name): ClapTrap(name + "_clap_name"), ScavT
 	setHp(FragTrap::_hitPoints);
 	setEp(ScavTrap::_energyPoints);
 	setAt(FragTrap::_attackDamage);
-
-	std::cout << "💎 DiamondTrap parametrized constructor called" << std::endl;
+	std::cout << magenta ;
+	std::cout << "Constructor DiamondTrap Named " << this->getName() << std::endl;
+	std::cout << rst ;
 }
 
 DiamondTrap::~DiamondTrap(void) 
 {
-	std::cout << "DiamondTrap destructor called" << std::endl;
+	std::cout << rojo ;
+	std::cout << "Destructor DiamondTrap Named " << this->getName() << std::endl;
+	std::cout << rst ;
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap &copy)

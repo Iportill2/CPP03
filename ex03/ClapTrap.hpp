@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: imontero <imontero@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/18 17:06:28 by imontero          #+#    #+#             */
-/*   Updated: 2023/12/19 17:41:03 by imontero         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef CLAPTRAP_HPP
 # define CLAPTRAP_HPP
 
@@ -49,6 +37,14 @@ class ClapTrap
 		
 		void		setAt(unsigned int amount);
 		void		showStatus(void);
+
+		std::string verde ;
+		std::string amarillo ;
+		std::string azul ;
+		std::string magenta ;
+		std::string cian ;
+		std::string rojo ;
+		std::string rst ;
 };
 
 #endif
