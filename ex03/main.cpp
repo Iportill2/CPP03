@@ -19,10 +19,10 @@ int main()
 	//ScavTrap	manolito("Manu");
 	//FragTrap	gustavito("Gustavito");
 
+	DiamondTrap	diamantita;
 	DiamondTrap	diamantito("Diamantitos");
-
 	diamantito.whoAmI();
-	
+	diamantita.whoAmI();
 	/*gustavito.highFivesGuys();
 	manolito.attack("Kalletano");
 	kalletano.takeDamage(20);

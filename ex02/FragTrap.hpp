@@ -2,7 +2,7 @@
 # define FRAGTRAP_HPP
 # include "ScavTrap.hpp"
 
-class FragTrap :public ScavTrap
+class FragTrap :virtual public ClapTrap
 {
 	private:
 	

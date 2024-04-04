@@ -2,7 +2,7 @@
 # define SCAVTRAP_HPP
 # include "ClapTrap.hpp"
 
-class ScavTrap : public ClapTrap						//public claptrap
+class ScavTrap : virtual public ClapTrap					//public claptrap
 {
 	private:
 
