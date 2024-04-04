@@ -12,13 +12,11 @@ class ClapTrap
 		int 		_attackDamage;
 
 	public:
-		ClapTrap(void);
-		ClapTrap(std::string name);
-		~ClapTrap(void);
-		
-		ClapTrap(const ClapTrap &copy);
-		
-		ClapTrap & operator =(ClapTrap const &inst2);
+		ClapTrap(void);									//canonical
+		ClapTrap(std::string name);						//canonical
+		~ClapTrap(void);								//canonical
+		ClapTrap(const ClapTrap &copy);					//canonical
+		ClapTrap & operator =(ClapTrap const &inst);	//canonical
 		
 		void		attack(const std::string &target);
 		void		takeDamage(unsigned int amount);

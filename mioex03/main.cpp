@@ -13,16 +13,12 @@
 
 int main()
 {
-	//ClapTrap	josebas("Josebas");
-	//ClapTrap	kalletano("Kalletano");
-	//ClapTrap	txutxi;
-	//ScavTrap	manolito("Manu");
-	//FragTrap	gustavito("Gustavito");
 
 	DiamondTrap	diamantita;
 	DiamondTrap	diamantito("Diamantitos");
 	diamantito.whoAmI();
 	diamantita.whoAmI();
+	//diamantita.attack("diamantito.getName()");
 	/*gustavito.highFivesGuys();
 	manolito.attack("Kalletano");
 	kalletano.takeDamage(20);

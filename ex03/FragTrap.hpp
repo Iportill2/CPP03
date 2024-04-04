@@ -12,13 +12,11 @@ class FragTrap : public virtual ClapTrap
 
 	
 	public:
-		FragTrap(void);
-		FragTrap(std::string name);
-		~FragTrap(void);
-		
-		FragTrap(const FragTrap &copy);
-
-		FragTrap & operator =(FragTrap const &inst2);		
+		FragTrap(void);									//canonical
+		FragTrap(std::string name);						//canonical
+		~FragTrap(void);								//canonical
+		FragTrap(const FragTrap &copy);					//canonical
+		FragTrap & operator =(FragTrap const &inst2);	//canonical
 		
 		void	highFivesGuys(void);
 };

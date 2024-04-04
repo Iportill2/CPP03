@@ -10,13 +10,11 @@ class ScavTrap : public virtual ClapTrap
 		int			_energyPoints;
 		int			_attackDamage;
 	public:
-		ScavTrap(void);
-		ScavTrap(std::string name);
-		~ScavTrap(void);
-
-		ScavTrap(const ScavTrap &copy);
-
-		ScavTrap & operator =(ScavTrap const &inst2);
+		ScavTrap(void);									//canonical
+		ScavTrap(std::string name);						//canonical
+		~ScavTrap(void);								//canonical
+		ScavTrap(const ScavTrap &copy);					//canonical
+		ScavTrap & operator =(ScavTrap const &inst2);	//canonical
 		
 		void	guardGate(void);
 		void	attack(const std::string &target);

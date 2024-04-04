@@ -41,11 +41,11 @@ ClapTrap::~ClapTrap(void)
 	std::cout << rst ;
 }
 
-ClapTrap & ClapTrap::operator =(ClapTrap const &inst2)
+ClapTrap & ClapTrap::operator =(ClapTrap const &inst)
 {
-	this->_name = inst2._name;
-	this->_hitPoints = inst2._hitPoints;
-	this->_energyPoints = inst2._energyPoints;
+	this->_name = inst._name;
+	this->_hitPoints = inst._hitPoints;
+	this->_energyPoints = inst._energyPoints;
 
 	return (*this);
 }
