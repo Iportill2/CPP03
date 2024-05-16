@@ -14,9 +14,9 @@ class ClapTrap
 	public:
 					ClapTrap();						//canonical
 					ClapTrap(std::string name);		//canonical
-					~ClapTrap();					//canonical
 					ClapTrap(const ClapTrap &copy);	//canonical
-					ClapTrap & operator =(ClapTrap const &inst2);//canonical
+					ClapTrap & operator=(ClapTrap const &inst2);//canonical
+					~ClapTrap();					//canonical
 
 		void 		attack(const std::string& target); 	//public member funtion subject
 		void 		takeDamage(unsigned int amount); 	//public member funtion subject
@@ -27,6 +27,10 @@ class ClapTrap
 		int 		getHp() const;
 		int 		getEp() const; 
 		int 		getAd() const;
+		/*VIEW STATS*/
+		void 		viewstats();
+		void		doAttack(ClapTrap Target);
+		void		doRepair(ClapTrap Target,unsigned int amount);
 		/*UTILITY FUNTIONS*/
 		void 		status(const ClapTrap& ramd, const ClapTrap& pepe);
 		bool		is_die();
@@ -35,7 +39,7 @@ class ClapTrap
 		/*SETTER*/
 		void		setdefHp(int value);
 		void 		setHp(int value);
-		void		setEnergy(int value);
+		void		setEp(int value);
 		void		setAd(int value);
 		void		setName(std::string name);
 		/*PRINTS*/
