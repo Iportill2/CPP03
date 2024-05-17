@@ -1,6 +1,6 @@
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
-int main()
+void subject()
 {
 	ClapTrap	a("lucas");
 	ScavTrap	pepe("pepe");
@@ -22,4 +22,24 @@ int main()
 	paco.takeDamage(pepe.getAd());
 	paco.status(pepe,paco);
 	paco.attack("pepe");
+
+}
+void testConstDest()
+{
+	FragTrap a;
+	ScavTrap b;
+	ClapTrap c;
+}
+void owntest()
+{
+	FragTrap a;
+	FragTrap b("Fb");
+	FragTrap c(b);
+	FragTrap d = a;
+}
+int main()
+{
+	//subject();
+	//testConstDest();
+	owntest();
 }

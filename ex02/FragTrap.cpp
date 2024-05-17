@@ -1,13 +1,14 @@
 #include "FragTrap.hpp"
-FragTrap::FragTrap() : ScavTrap()
+FragTrap::FragTrap() : ClapTrap()
 {
 	print("FragTrap Default Constructor");
 	setName("Random_frag");
 	setHp(100);
-	setEnergy(50);
+	setEp(50);
 	setAd(20);
+	setdefHp(getHp());
 
-	nprint("setname to:");
+/* 	nprint("setname to:");
 	print(getName());
 	nprint("setHP to:");
 	intprint(getHp());
@@ -15,15 +16,17 @@ FragTrap::FragTrap() : ScavTrap()
 	intprint(getEp());
 	nprint("setAD to:");
 	intprint(getAd());
-	std::cout << "" << std::endl;
+	std::cout << "" << std::endl; */
 }
-FragTrap::FragTrap(std::string name) : ScavTrap(name)
+FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
 	print("FragTrap Constructor");
 	setHp(100);
-	setEnergy(100);
+	setEp(100);
 	setAd(30);
-	nprint("setname to:");
+	this->setdefHp(this->getHp());
+
+/* 	nprint("setname to:");
 	print(getName());
 	nprint("setHP to:");
 	intprint(getHp());
@@ -31,9 +34,9 @@ FragTrap::FragTrap(std::string name) : ScavTrap(name)
 	intprint(getEp());
 	nprint("setAD to:");
 	intprint(getAd());
-	std::cout << "" << std::endl;
+	std::cout << "" << std::endl; */
 }
-FragTrap::FragTrap(const FragTrap &copy)
+FragTrap::FragTrap(const FragTrap &copy): ClapTrap()
 {
 	print("FragTrap Copy constructor");
 	*this = copy;
@@ -46,8 +49,9 @@ FragTrap & FragTrap::operator =(FragTrap const &inst)
 {
 	this->setName(inst.getName());
 	this->setHp(inst.getHp());
-	this->setEnergy(inst.getEp());
+	this->setEp(inst.getEp());
 	this->setAd(inst.getAd());
+	this->setdefHp(inst.getdefHp());
 	return (*this);
 }
 

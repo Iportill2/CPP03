@@ -10,9 +10,9 @@ ClapTrap::ClapTrap() : _name("Ramdom"),_hit_points(10),_energy_point(10),_attack
 	cian = "\033[36m";
 	rojo = "\033[31m";
 	rst = "\033[0m";
-	print("ClapTrap Default Destructor");
+	print("ClapTrap Default Constructor");
 
-	this->_defaultHp = this->_hit_points;
+	this->setdefHp(this->getHp());
 /* 	std::cout << rojo;
 	nprint("setname to:");
 	print(getName());
@@ -38,7 +38,7 @@ ClapTrap::ClapTrap(std::string name) : _name(name),_hit_points(10),_energy_point
 	rst = "\033[0m";
 	print("ClapTrap Constructor");
 	
-	this->_defaultHp = this->_hit_points;
+	this->setdefHp(this->getHp());
 /* 	std::cout << verde;
 	nprint("setname to:");
 	print(getName());

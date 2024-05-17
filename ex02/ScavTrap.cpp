@@ -5,8 +5,9 @@ ScavTrap::ScavTrap() :  ClapTrap()
 	print("ScavTrap Default Constructor");
 	setName("Random");
 	setHp(100);
-	setEnergy(50);
+	setEp(50);
 	setAd(20);
+	setdefHp(getHp());
 
 	nprint("setname to:");
 	print(getName());
@@ -22,8 +23,10 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
 	print("ScavTrap Constructor");
 	setHp(100);
-	setEnergy(50);
+	setEp(50);
 	setAd(20);
+	setdefHp(getHp());
+	
 	nprint("setname to:");
 	print(getName());
 	nprint("setHP to:");
@@ -34,9 +37,14 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 	intprint(getAd());
 	std::cout << "" << std::endl;
 }
-ScavTrap::ScavTrap(const ScavTrap &copy)
+ScavTrap::ScavTrap(const ScavTrap &copy) : ClapTrap(copy.getName()) 
 {
 	std::cout << "ScavTrap Copy constructor" << std::endl;
+	setHp(100);
+	setEp(50);
+	setAd(20);
+	setdefHp(getHp());
+
 	*this = copy;
 }
 ScavTrap::~ScavTrap()
@@ -48,7 +56,7 @@ ScavTrap & ScavTrap::operator =(ScavTrap const &inst)
 {
 	this->setName(inst.getName());
 	this->setHp(inst.getHp());
-	this->setEnergy(inst.getEp());
+	this->setEp(inst.getEp());
 	this->setAd(inst.getAd());
 	return (*this);
 }

@@ -2,7 +2,7 @@
 # define SCAVTRAP_HPP
 # include "ClapTrap.hpp"
 
-class ScavTrap : virtual public ClapTrap					//public claptrap
+class ScavTrap : virtual public ClapTrap						//public claptrap
 {
 	private:
 
@@ -16,3 +16,4 @@ class ScavTrap : virtual public ClapTrap					//public claptrap
 		void 		guardGate();						//public member funtion subject
 };
 #endif
+
