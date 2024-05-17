@@ -17,31 +17,31 @@ class ClapTrap
 					ClapTrap(const ClapTrap &copy);	//canonical
 					ClapTrap & operator=(ClapTrap const &inst2);//canonical
 					~ClapTrap();					//canonical
-
+		//SUBJECT FUNTIONS
 		void 		attack(const std::string& target); 	//public member funtion subject
 		void 		takeDamage(unsigned int amount); 	//public member funtion subject
 		void 		beRepaired(unsigned int amount); 	//public member funtion subject
+		/*SETTER*/
+		void		setdefHp(int value);
+
+		void 		setHp(int value);
+		void		setEp(int value);
+		void		setAd(int value);
+		void		setName(std::string name);
 		/*GETTER*/
-		std::string getName() const ;
 		int			getdefHp() const;
+		std::string getName() const ;
 		int 		getHp() const;
 		int 		getEp() const; 
 		int 		getAd() const;
 		/*VIEW STATS*/
 		void 		viewstats();
-		void		doAttack(ClapTrap Target);
-		void		doRepair(ClapTrap Target,unsigned int amount);
+
 		/*UTILITY FUNTIONS*/
 		void 		status(const ClapTrap& ramd, const ClapTrap& pepe);
 		bool		is_die();
 		bool		is_lowEnergy();
 		void 		discountEnergy(const std::string& target);
-		/*SETTER*/
-		void		setdefHp(int value);
-		void 		setHp(int value);
-		void		setEp(int value);
-		void		setAd(int value);
-		void		setName(std::string name);
 		/*PRINTS*/
 		void 		print(std::string s);
 		void 		intprint(int n);
