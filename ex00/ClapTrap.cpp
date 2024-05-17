@@ -12,6 +12,7 @@ ClapTrap::ClapTrap() : _name("Ramdom"),_hit_points(10),_energy_point(10),_attack
 	rst = "\033[0m";
 	print("ClapTrap Default Destructor");
 
+	this->_defaultHp = this->_hit_points;
 /* 	std::cout << rojo;
 	nprint("setname to:");
 	print(getName());
@@ -37,6 +38,7 @@ ClapTrap::ClapTrap(std::string name) : _name(name),_hit_points(10),_energy_point
 	rst = "\033[0m";
 	print("ClapTrap Constructor");
 	
+	this->_defaultHp = this->_hit_points;
 /* 	std::cout << verde;
 	nprint("setname to:");
 	print(getName());
@@ -57,6 +59,8 @@ ClapTrap & ClapTrap::operator =(ClapTrap const &inst)
 	this->_hit_points = inst._hit_points;
 	this->_energy_point = inst._energy_point;
 	this->_attack_damage = inst._attack_damage;
+
+	this->_defaultHp = inst._defaultHp;
 	return (*this);
 }
 ClapTrap::ClapTrap(const ClapTrap &copy)
@@ -102,23 +106,49 @@ void ClapTrap::attack(const std::string& target)
 }
 void ClapTrap::takeDamage(unsigned int amount)
 {
-	if(this->_hit_points <= 0)
+	int damage = 0;
+	damage += amount; 
+
+	if(damage < 0 )
 	{
-		std::cout << rojo << this->getName() <<  " Its already dead!" << rst << std::endl;
-		std::cout << this->getName() << " take " << amount << " damage" << std::endl;
-		this->_hit_points-=amount;
+		print(rojo);
+		std::cout << "INVALID VALUE in TAKE DAMAGE:" << std::endl;
 		print(rst);
 		return;
 	}
+		if(this->_hit_points <= 0)
+		{
+			std::cout << rojo << this->getName() <<  " Its already dead!" << rst << std::endl;
+			std::cout << this->getName() << " take " << amount << " damage" << std::endl;
+			this->_hit_points-=amount;
+			print(rst);
+			return;
+		}
+	std::cout << rojo;
 	std::cout << this->getName() << " take " << amount << " damage" << std::endl;
 	this->_hit_points-=amount;
-	if(this->_hit_points <= 0)
-		 std::cout << rojo << this->getName() <<  " DIE!" << rst << std::endl;
+		if(this->_hit_points <= 0)
+			 std::cout << rojo << this->getName() <<  " DIE!" << rst << std::endl;
 	print(rst);
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
+
+	int healed = 0;
+	healed += amount; 
+
+	if(healed < 0 )
+	{
+		print(rojo);
+		std::cout << "INVALID VALUE in BE REPAIRED:" << std::endl;
+		print(rst);
+		return;
+	}
+
+	std::cout << "amount:" << amount << std::endl;
+
+	std::cout << "defHP:"<< this->getdefHp() << std::endl;
 	if(this->is_die() == true)
 	{
 		nprint(getName());
@@ -133,35 +163,65 @@ void ClapTrap::beRepaired(unsigned int amount)
 	}
 	else
 	{
-		print(rojo);
-		std::cout << this->getName();
-		std::cout << " Heals ";
-		intprint(amount);
-		std::cout <<"Total Hp = ";
-		this->_hit_points+= amount;
-		if(this->getHp() > this->getdefHp())
-			this->_hit_points = this->_defaultHp;
-		intprint(this->getHp());
-		this->discountEnergy(this->getName());
+		print(azul);
+		if((this->_hit_points + healed) >= this->getdefHp())
+		{
+			//std::cout << "1healedPRE:"<< healed << std::endl;
+			healed = this->getdefHp() - getHp();
+			//std::cout << "1healed:"<< healed << std::endl;
+		}
+		else
+		{
+			//std::cout << "2healed:"<< healed << std::endl;
+		}
+		this->_hit_points += healed;
+
+			std::cout << this->getName();
+			std::cout << " Heals ";
+			intprint(healed);
+			std::cout <<"Total Hp = ";
+			intprint(this->getHp());
+			this->discountEnergy(this->getName());
 	}
 	print(rst);
 }
 ////////////////SETTERS////////////////////
 void	ClapTrap::setdefHp(int value)
 {
+	if(isNegative(value) == true)
+	{
+		std::cout << RED << "INVALID SetdefHP Value" << rst << std::endl;
+		return;
+	}
 	this->_defaultHp = value;
 }
 
 void ClapTrap::setHp(int value) 
 {   
+	if(isNegative(value) == true)
+	{
+		std::cout << RED << "INVALID SetHP Value" << rst << std::endl;
+		return;
+	}
     this->_hit_points = value;
+	this->_defaultHp = value;
 }
 void ClapTrap::setEp(int value)
 {
+	if(isNegative(value) == true)
+	{
+		std::cout << RED << "INVALID SetEp Value" << rst << std::endl;
+		return;
+	}
 	this->_energy_point=value;
 }
 void		ClapTrap::setAd(int value)
 {
+	if(isNegative(value) == true)
+	{
+		std::cout << RED << "INVALID SetAd Value" << rst << std::endl;
+		return;
+	}
 	this->_attack_damage=value;
 }
 void		ClapTrap::setName(std::string name)
@@ -200,6 +260,16 @@ void ClapTrap::viewstats()
 	std::cout << "Claptrap AD:" << this->getAd() << std::endl<< std::endl;
 }
 /////////////////UTILITY FUNTIONS///////////////////
+
+bool	ClapTrap::isNegative(int value)
+{
+	if(value < 0)
+		return(true);
+	else
+		return(false);
+}
+
+
 void ClapTrap::status(const ClapTrap& pjOne, const ClapTrap& pjTwo) 
 {
 	std::cout << magenta;

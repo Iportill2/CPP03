@@ -1,6 +1,8 @@
 #ifndef CLAPTRAP_HPP
 # define CLAPTRAP_HPP
 # include <iostream>
+
+# define RED "\033[31m" ///////////
 class ClapTrap
 {
 	private:
@@ -23,7 +25,6 @@ class ClapTrap
 		void 		beRepaired(unsigned int amount); 	//public member funtion subject
 		/*SETTER*/
 		void		setdefHp(int value);
-
 		void 		setHp(int value);
 		void		setEp(int value);
 		void		setAd(int value);
@@ -38,6 +39,7 @@ class ClapTrap
 		void 		viewstats();
 
 		/*UTILITY FUNTIONS*/
+		bool		isNegative(int value);
 		void 		status(const ClapTrap& ramd, const ClapTrap& pepe);
 		bool		is_die();
 		bool		is_lowEnergy();
