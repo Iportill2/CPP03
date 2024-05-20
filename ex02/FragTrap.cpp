@@ -4,9 +4,9 @@ FragTrap::FragTrap() : ClapTrap()
 	print("FragTrap Default Constructor");
 	setName("Random_frag");
 	setHp(100);
-	setEp(50);
-	setAd(20);
-	setdefHp(getHp());
+	setEp(100);
+	setAd(30);
+	this->setdefHp(this->getHp());
 
 /* 	nprint("setname to:");
 	print(getName());

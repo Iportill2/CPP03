@@ -21,6 +21,16 @@ DiamondTrap::DiamondTrap(std::string name): ClapTrap(name + "_clap_name"), ScavT
 	std::cout << "Constructor DiamondTrap Named " << /* this-> */getName() << std::endl;
 	std::cout << rst ;
 }
+DiamondTrap & DiamondTrap::operator =(DiamondTrap const &inst)
+{
+	this->_name = inst._name;
+	this->_hitPoints = inst._hitPoints;
+	this->_energyPoints = inst._energyPoints;
+	this->_attackDamage = inst._attackDamage;
+	this->_defaultHp = inst._defaultHp;
+
+	return (*this);
+}
 
 DiamondTrap::~DiamondTrap(void) 
 {

@@ -9,15 +9,16 @@ ScavTrap::ScavTrap() :  ClapTrap()
 	setAd(20);
 	setdefHp(getHp());
 
-	nprint("setname to:");
+/* 	nprint("setname to:");
 	print(getName());
 	nprint("setHP to:");
 	intprint(getHp());
 	nprint("setEP to:");
 	intprint(getEp());
 	nprint("setAD to:");
-	intprint(getAd());
+	intprint(getAd()); 
 	std::cout << "" << std::endl;
+	*/
 }
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
@@ -27,15 +28,16 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 	setAd(20);
 	setdefHp(getHp());
 	
-	nprint("setname to:");
+/* 	nprint("setname to:");
 	print(getName());
 	nprint("setHP to:");
 	intprint(getHp());
 	nprint("setEP to:");
 	intprint(getEp());
 	nprint("setAD to:");
-	intprint(getAd());
+	intprint(getAd()); 
 	std::cout << "" << std::endl;
+	*/
 }
 ScavTrap::ScavTrap(const ScavTrap &copy) : ClapTrap(copy.getName()) 
 {

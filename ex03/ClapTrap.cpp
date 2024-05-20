@@ -46,6 +46,8 @@ ClapTrap & ClapTrap::operator =(ClapTrap const &inst)
 	this->_name = inst._name;
 	this->_hitPoints = inst._hitPoints;
 	this->_energyPoints = inst._energyPoints;
+	this->_attackDamage = inst._attackDamage;
+	this->_defaultHp = inst._defaultHp;
 
 	return (*this);
 }

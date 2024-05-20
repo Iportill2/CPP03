@@ -52,6 +52,7 @@ ScavTrap & ScavTrap::operator =(ScavTrap const &inst2)
 	this->_hitPoints = inst2._hitPoints;
 	this->_energyPoints = inst2._energyPoints;
 	this->_attackDamage = inst2._attackDamage;
+	this->_defaultHp = inst2._defaultHp;
 
 	return (*this);
 }

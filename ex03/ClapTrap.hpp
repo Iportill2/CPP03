@@ -6,6 +6,8 @@
 class ClapTrap
 {
 	protected:
+		int			_defaultHp;
+
 		std::string	_name;
 		int 		_hitPoints;
 		int 		_energyPoints;

@@ -36,10 +36,18 @@ void owntest()
 	FragTrap b("Fb");
 	FragTrap c(b);
 	FragTrap d = a;
+
+	a.status(a,b);
+	a.status(c,d);
+
+	a.highFivesGuys();
+	b.highFivesGuys();
+	c.highFivesGuys();
+	d.highFivesGuys();
 }
 int main()
 {
-	//subject();
+	subject();
 	//testConstDest();
-	owntest();
+	//owntest();
 }

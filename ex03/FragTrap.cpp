@@ -48,6 +48,8 @@ FragTrap & FragTrap::operator =(FragTrap const &inst2)
 	this->_name = inst2._name;
 	this->_hitPoints = inst2._hitPoints;
 	this->_energyPoints = inst2._energyPoints;
+	this->_attackDamage = inst2._attackDamage;
+	this->_defaultHp = inst2._defaultHp;
 
 	return (*this);
 }
