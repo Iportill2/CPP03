@@ -3,12 +3,12 @@
 
 #include "ScavTrap.hpp"
 
-class FragTrap : public virtual ClapTrap
+class FragTrap : virtual public ClapTrap
 {
 	protected:
-		int			_hitPoints;
+/* 		int			_hitPoints;
 		int			_energyPoints;
-		int			_attackDamage;
+		int			_attackDamage; */
 
 	
 	public:

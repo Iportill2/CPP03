@@ -1,11 +1,12 @@
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap(void) : ClapTrap(), _hitPoints(100), _energyPoints(100), _attackDamage(30)
+FragTrap::FragTrap(void) : ClapTrap()//, _hitPoints(100), _energyPoints(100), _attackDamage(30)
 {
 	setHp(100);
 	setEp(100);
-	setAt(30);
+	setAd(30);
 	
+	setdefHp(FragTrap::_hit_points);
 	/*this->setHp(100);
 	this->setEp(100);
 	this->setAt(30);*/
@@ -15,12 +16,13 @@ FragTrap::FragTrap(void) : ClapTrap(), _hitPoints(100), _energyPoints(100), _att
 	//std::cout << "FragTrap (Default) 👾 : " << this->getName() << " assembled!" << std::endl;
 }
 
-FragTrap::FragTrap(std::string name) : ClapTrap(name), _hitPoints(100), _energyPoints(100), _attackDamage(30)
+FragTrap::FragTrap(std::string name) : ClapTrap(name)//, _hitPoints(100), _energyPoints(100), _attackDamage(30)
 {
 	setHp(100);
 	setEp(100);
-	setAt(30);
+	setAd(30);
 	
+	setdefHp(FragTrap::_hit_points);
 	/*this->setHp(100);
 	this->setEp(100);
 	this->setAt(30);*/
@@ -31,7 +33,7 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name), _hitPoints(100), _energyP
 
 FragTrap::FragTrap(const FragTrap &copy) : ClapTrap(copy)
 {
-	std::cout << "FragTrap ⚙️ Copy constructor called" << std::endl;
+	std::cout << "FragTrap ⚙️ Copy constructor called "<< this->_name << std::endl;
 	*this = copy;
 }
 
@@ -45,10 +47,11 @@ FragTrap::~FragTrap(void)
 
 FragTrap & FragTrap::operator =(FragTrap const &inst2)
 {
+	print("FragTrap operator=");
 	this->_name = inst2._name;
-	this->_hitPoints = inst2._hitPoints;
-	this->_energyPoints = inst2._energyPoints;
-	this->_attackDamage = inst2._attackDamage;
+	this->_hit_points = inst2._hit_points;
+	this->_energy_point = inst2._energy_point;
+	this->_attack_damage = inst2._attack_damage;
 	this->_defaultHp = inst2._defaultHp;
 
 	return (*this);

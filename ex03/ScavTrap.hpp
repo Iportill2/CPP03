@@ -3,12 +3,13 @@
 
 # include "ClapTrap.hpp"
 
-class ScavTrap : public virtual ClapTrap
+class ScavTrap : virtual public ClapTrap
 {
 	protected:
-		int			_hitPoints;
+		static const int			_scavEP = 50;
+/* 		int			_hitPoints;
 		int			_energyPoints;
-		int			_attackDamage;
+		int			_attackDamage; */
 	public:
 		ScavTrap(void);									//canonical
 		ScavTrap(std::string name);						//canonical
@@ -16,6 +17,8 @@ class ScavTrap : public virtual ClapTrap
 		ScavTrap(const ScavTrap &copy);					//canonical
 		ScavTrap & operator =(ScavTrap const &inst2);	//canonical
 		
+
+		int getScavEp();
 		void	guardGate(void);
 		void	attack(const std::string &target);
 };

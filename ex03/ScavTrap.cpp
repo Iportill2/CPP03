@@ -1,11 +1,12 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(void) : ClapTrap(), _hitPoints(100), _energyPoints(50), _attackDamage(20)
+ScavTrap::ScavTrap(void) : ClapTrap()//, _hitPoints(100), _energyPoints(50), _attackDamage(20)
 {
 	setHp(100);
 	setEp(50);
-	setAt(20);
+	setAd(20);
 	
+	setdefHp(_hit_points);
 	/*this->_hitPoints = 100;
 	this->_energyPoints = 50;
 	this->_attackDamage = 20;
@@ -18,11 +19,13 @@ ScavTrap::ScavTrap(void) : ClapTrap(), _hitPoints(100), _energyPoints(50), _atta
 	std::cout << rst ;
 }
 
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name), _hitPoints(100), _energyPoints(50), _attackDamage(20)
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name)//, _hitPoints(100), _energyPoints(50), _attackDamage(20)
 {
 	setHp(100);
 	setEp(50);
-	setAt(20);
+	setAd(20);
+
+	setdefHp(_hit_points);
 	/*this->_hitPoints = 100;
 	this->_energyPoints = 50;
 	this->_attackDamage = 20;*/
@@ -34,7 +37,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name), _hitPoints(100), _energyP
 
 ScavTrap::ScavTrap(const ScavTrap &copy) : ClapTrap(copy)
 {
-	std::cout << "SC4V-TP ⚙️ Copy constructor called" << std::endl;
+	std::cout << "SC4V-TP ⚙️ Copy constructor called "<< this->_name << std::endl;
 	*this = copy;
 }
 
@@ -48,10 +51,11 @@ ScavTrap::~ScavTrap(void)
 
 ScavTrap & ScavTrap::operator =(ScavTrap const &inst2)
 {
+	print("ScavTrap operator=");
 	this->_name = inst2._name;
-	this->_hitPoints = inst2._hitPoints;
-	this->_energyPoints = inst2._energyPoints;
-	this->_attackDamage = inst2._attackDamage;
+	this->_hit_points = inst2._hit_points;
+	this->_energy_point = inst2._energy_point;
+	this->_attack_damage = inst2._attack_damage;
 	this->_defaultHp = inst2._defaultHp;
 
 	return (*this);
@@ -59,11 +63,11 @@ ScavTrap & ScavTrap::operator =(ScavTrap const &inst2)
 
 void	ScavTrap::attack(const std::string &target)
 {
-	if (this->isWorking())
+	if (this->getHp() > 0 && this->getEp() > 0) 
 	{
 		std::cout << "🪓 SC4V-TP " << this->getName() << " attacks " << target;
 		std::cout << std::endl;
-		this->setEp(-1);
+		this->setEp(this->getEp() - 1);
 	}
 	else
 		std::cout << "🚫 " << this->getName() << " is not working" << std::endl;
@@ -72,4 +76,8 @@ void	ScavTrap::attack(const std::string &target)
 void	ScavTrap::guardGate(void)
 {
 	std::cout << this->getName() << " is now in Gate Keeper mode 🥅" << std::endl;
+}
+int ScavTrap::getScavEp()
+{
+	return(this->_scavEP);
 }
